@@ -34,9 +34,7 @@ new Vue({
 	created() {
 		this.loadTasks()
 	},
-	computed: {
-
-	},
+	computed: {},
 	methods: {
 		add: function () {
 			this.editor = {
@@ -74,6 +72,7 @@ new Vue({
 				})
 		},
 		edit: function (idx) {
+			// clone the task and show the editor
 			this.editor = JSON.parse(JSON.stringify(this.tasks[idx]))
 			this.isEditing = true
 		},
