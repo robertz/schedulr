@@ -1,52 +1,50 @@
-<div v-if="isEditing">
-	<div class="card mb-3">
-		<div class="card-header bg-primary text-white">
-			Task Editor
+<div v-if="isEditing" class="mb-4">
+	<div class="card">
+		<div class="card-header">
+			<p class="card-header-title">Task Editor</p>
 		</div>
-		<div class="card-body">
-			<h5 class="card-title">Update a Task</h5>
-			<div class="row">
-				<div class="col-6">
+		<div class="card-content">
+			<div class="content">
+				<div class="columns">
+					<div class="column is-6">
 
-					<div class="form-group">
-						<label for="editorTask">Task</label>
-						<input id="editorTask" class="form-control" type="text" v-model="editor.task" />
-					</div>
-					<div class="form-group">
-						<label for="editorURL">URL</label>
-						<input id="editorURL" class="form-control" type="text" v-model="editor.url" />
-					</div>
-					<div class="form-group">
-						<label for="editorFile">File</label>
-						<input id="editorFile" class="form-control" type="text" v-model="editor.file" />
-					</div>
 
-				</div>
-				<div class="col-6">
-					<div class="form-group">
-						<label for="editorStartDate">Start Date</label>
-						<input id="editorStartDate" class="form-control" type="text" v-model="editor.startdate" />
+							<label for="editorTask">Task</label>
+							<input id="editorTask" class="input" type="text" v-model="editor.task" />
+
+							<label for="editorURL">URL</label>
+							<input id="editorURL" class="input" type="text" v-model="editor.url" />
+
+							<label for="editorFile">File</label>
+							<input id="editorFile" class="input" type="text" v-model="editor.file" />
+
+
 					</div>
-					<div class="form-group">
-						<label for="editorStartTime">Start Time</label>
-						<input id="editorStartTime" class="form-control" type="text" v-model="editor.starttime" />
-					</div>
-					<div class="form-group">
-						<label for="editorInterval">Interval</label>
-						<input id="editorInterval" class="form-control" type="text" v-model="editor.interval" />
+					<div class="column is-6">
+
+							<label for="editorStartDate">Start Date</label>
+							<input id="editorStartDate" class="input" type="text" v-model="editor.startdate" />
+
+							<label for="editorStartTime">Start Time</label>
+							<input id="editorStartTime" class="input" type="text" v-model="editor.starttime" />
+
+							<label for="editorInterval">Interval</label>
+							<input id="editorInterval" class="input" type="text" v-model="editor.interval" />
+
 					</div>
 				</div>
+				<div>
+					<input type="button" class="button is-success" value="Update" @click="updateTask" />
+					<input type="button" class="button is-danger" value="Cancel" @click="isEditing=false" />
+				</div>
 			</div>
-			<div class="col-6">
-				<input type="button" class="btn btn-success" value="Update" @click="updateTask" />
-				<input type="button" class="btn btn-danger" value="Cancel" @click="isEditing=false" />
-			</div>
+
 		</div>
 	</div>
 </div>
 
-<div class="table-responsive">
-	<table class="table table-striped table-bordered table-sm table-hover">
+<div class="table-container">
+	<table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
 		<thead class="thead-dark">
 			<tr>
 				<th scope="col">Task</th>
@@ -81,5 +79,5 @@
 			</tr>
 		</tbody>
 	</table>
-	<input type="button" class="btn btn-primary" value="Add New" @click="add">
+	<input type="button" class="button is-primary" value="Add New" @click="add">
 </div>
