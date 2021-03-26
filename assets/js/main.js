@@ -3,38 +3,37 @@ new Vue({
 	data() {
 		return {
 			tasks: [],
-			editor: {
-				unique: false,
-				proxyport: "",
-				starttime: "",
-				proxypassword: "",
-				proxyuser: "",
-				enddate: "",
-				interval: "",
-				startdate: "",
-				path: "",
-				url: "",
-				proxyserver: "",
-				paused: false,
-				password: "",
-				endtime: "",
-				file: "",
-				port: "",
-				timeout: "",
-				valid: "true",
-				username: "",
-				autoDelete: false,
-				publish: false,
-				task: "",
-				resolveurl: false
-			},
+			editor: {},
 			isEditing: false
 		}
 	},
 	created() {
 		this.loadTasks()
 	},
-	computed: {},
+	computed: {
+		editorValid: function () {
+			// is the current state of the editor valid to update
+			if(!('url' in this.editor)) return false
+
+			// validate the url is valid
+			function isValidHttpUrl(string) {
+				let url;
+				try {
+					url = new URL(string);
+				} catch (_) {
+					return false;
+				}
+				return url.protocol === "http:" || url.protocol === "https:";
+			}
+			// compute yo
+			return (
+				this.editor.task.length &&
+				this.editor.startdate.length &&
+				this.editor.starttime.length &&
+				isValidHttpUrl(this.editor.url)
+			)
+		}
+	},
 	methods: {
 		add: function () {
 			this.editor = {
@@ -73,11 +72,12 @@ new Vue({
 		},
 		edit: function (idx) {
 			// clone the task and show the editor
-			this.editor = JSON.parse(JSON.stringify(this.tasks[idx]))
+			// this.editor = JSON.parse(JSON.stringify(this.tasks[idx]))
+			this.editor = _.clone(this.tasks[idx])
 			this.isEditing = true
 		},
 		exe: function (task){
-			fetch(`/api/runTask/task/${task}`)
+			fetch(`/api/doTask/task/${task}/a/run`)
 		},
 		loadTasks: function () {
 			fetch('/api/getTasks')
@@ -86,9 +86,9 @@ new Vue({
 					this.tasks = res.response.tasks
 				})
 		},
-		alterTask: function (idx) {
+		doTask: function (idx) {
 			let action = this.tasks[idx].paused ? 'resume' : 'pause'
-			fetch(`/api/alterTask/task/${this.tasks[idx].task}/a/${action}`)
+			fetch(`/api/doTask/task/${this.tasks[idx].task}/a/${action}`)
 				.then(res => res.json())
 				.then(res => {
 					this.tasks = res.response.tasks
