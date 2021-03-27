@@ -9,37 +9,41 @@
 					<div class="column is-6">
 
 
-							<label for="editorTask">Task</label>
+							<label for="editorTask" class="has-text-weight-bold">Task</label>
 							<input id="editorTask" class="input" type="text" v-model="editor.task" />
 
-							<label for="editorURL">URL</label>
+							<label for="editorURL" class="has-text-weight-bold">URL</label>
 							<input id="editorURL" class="input" type="url" v-model="editor.url" />
 
-							<label for="editorFile">File</label>
+							<label for="editorFile" class="has-text-weight-bold">File</label>
 							<input id="editorFile" class="input" type="text" v-model="editor.file" />
 
 
 					</div>
 					<div class="column is-6">
 
-							<label for="editorStartDate">Start Date</label>
+							<label for="editorStartDate" class="has-text-weight-bold">Start Date</label>
 							<input id="editorStartDate" class="input" type="text" v-model="editor.startdate" />
 
-							<label for="editorStartTime">Start Time</label>
+							<label for="editorStartTime" class="has-text-weight-bold">Start Time</label>
 							<input id="editorStartTime" class="input" type="text" v-model="editor.starttime" />
 
-							<label for="editorEndDate">End Date</label>
+							<label for="editorEndDate" class="has-text-weight-bold">End Date</label>
 							<input id="editorEndDate" class="input" type="text" v-model="editor.enddate" />
 
-							<label for="editorEndTime">End Time</label>
+							<label for="editorEndTime" class="has-text-weight-bold">End Time</label>
 							<input id="editorEndTime" class="input" type="text" v-model="editor.endtime" />
 
-							<label for="editorInterval">Interval</label>
+							<label for="editorInterval" class="has-text-weight-bold">Interval</label>
 							<input id="editorInterval" class="input" type="text" v-model="editor.interval" />
 
 					</div>
 				</div>
-				<div>
+				<div v-if="saveError" class="notification is-danger">
+					<button class="delete" @click="saveError=0"></button>
+					<strong>Uh oh!</strong> There was an error saving your data. Check your attributes and try again.
+				</div>
+				<div class="block">
 					<input type="button" class="button is-success" value="Update" @click="updateTask" :disabled="!editorValid" />
 					<input type="button" class="button is-danger" value="Cancel" @click="isEditing=false" />
 				</div>

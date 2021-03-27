@@ -66,13 +66,12 @@ component {
 			data.response.tasks.append(taskList(), true);
 		}
 		catch(any e){
-			data['meta_data']['code'] = 500;
+			data['meta_data']['code'] = 400;
 			data['meta_data']['status'] = "error";
 			data['meta_data']['type'] = "error";
 			data['meta_data']['message'] = "error";
-			chron(type = "error", message = deserializeJSON(e));
 		}
-		return data;
+		event.renderData(data = serializeJSON(data), statusCode = data.meta_data.code);
 	}
 
 	function doTask (event, rc, prc) {

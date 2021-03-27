@@ -4,7 +4,8 @@ new Vue({
 		return {
 			tasks: [],
 			editor: {},
-			isEditing: false
+			isEditing: false, // editing a task
+			saveError: false // couldnt save
 		}
 	},
 	created() {
@@ -25,6 +26,7 @@ new Vue({
 				}
 				return url.protocol === "http:" || url.protocol === "https:";
 			}
+
 			// compute yo
 			return (
 				this.editor.task.length &&
@@ -94,6 +96,7 @@ new Vue({
 				})
 		},
 		updateTask: function () {
+			this.saveError = false
 			fetch('/api/postTask', {
 				method: 'POST',
 				cache: 'no-cache',
@@ -104,8 +107,14 @@ new Vue({
 			})
 			.then(res => res.json())
 			.then(res => {
-				this.isEditing = false
-				this.tasks = res.response.tasks
+
+				if(res.meta_data.code === 200){
+					this.isEditing = false
+					this.tasks = res.response.tasks
+				}
+				else {
+					this.saveError = true
+				}
 			})
 		}
 	},
