@@ -64,7 +64,7 @@ new Vue({
 			this.isEditing = true
 		},
 		del: function (task) {
-			fetch(`/api/alterTask/task/${task}/a/delete`)
+			fetch(`/api/doTask/task/${task}/a/delete`)
 				.then(res => res.json())
 				.then(res => {
 					this.tasks = res.response.tasks
@@ -72,8 +72,7 @@ new Vue({
 		},
 		edit: function (idx) {
 			// clone the task and show the editor
-			// this.editor = JSON.parse(JSON.stringify(this.tasks[idx]))
-			this.editor = _.clone(this.tasks[idx])
+			this.editor = JSON.parse(JSON.stringify(this.tasks[idx]))
 			this.isEditing = true
 		},
 		exe: function (task){
