@@ -14,7 +14,6 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 		<script src="https://unpkg.com/vue@2.6.12/dist/vue.js"></script>
 		<script src="https://unpkg.com/moment@2.29.1/moment.js"></script>
-		<script src="https://unpkg.com/lodash@4.17.21/lodash.js"></script>
 	</head>
 
 	<body>

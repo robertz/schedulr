@@ -81,5 +81,7 @@
 			</tr>
 		</tbody>
 	</table>
+</div>
+<div>
 	<input type="button" class="button is-primary" value="Add New" @click="add">
 </div>
