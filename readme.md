@@ -1,36 +1,19 @@
-# Advanced Script Template
+# Schedulr: Lucee cfschedule UI
 
-An advanced template with all the bells and whistles in script format
+## About
 
-## License
+It is often necessary to schedule http requests. ColdFusion makes it easy to create or modify a scheduled task with `cfschedule`, Schedulr makes them easy to manage.
 
-Apache License, Version 2.0.
+## Installation
 
-## Important Links
+With commandbox installed on your machine
+* clone the repo
+* cd into the directory
+* `box install` to install dependencies
+* `box server start` to start the server
+* profit
+## Other Stuff
 
-Source Code
+Cron, control-m, nifi, etc are great, but sometimes its nice to have a server running scheduled tasks in the background. The VueJS UI covers many of the cfschedule attributes, but not all (more to be added later). There is only basic validation on the form, but you will be notified if there is an error saving your task.
 
-- https://github.com/coldbox-templates/advanced-script
-
-## Quick Installation
-
-Each application templates contains a `box.json` so it can leverage [CommandBox](http://www.ortussolutions.com/products/commandbox) for its dependencies.  
-Just go into each template directory and type:
-
-```bash
-box install
-```
-
-This will setup all the needed dependencies for each application template.  You can then type:
-
-```bash
-box server start
-```
-
-And run the application.
-
----
- 
-### THE DAILY BREAD
-
- > "I am the way, and the truth, and the life; no one comes to the Father, but by me (JESUS)" Jn 14:1-12
+Using ColdBox 6, it is easy to drop in a new cfc in `/handlers` for more complex tasks.
