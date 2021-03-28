@@ -75,6 +75,7 @@ new Vue({
 		edit: function (idx) {
 			// clone the task and show the editor
 			this.editor = JSON.parse(JSON.stringify(this.tasks[idx]))
+			this.saveError = false
 			this.isEditing = true
 		},
 		exe: function (task){
