@@ -17,3 +17,5 @@ With commandbox installed on your machine
 Cron, control-m, nifi, etc are great, but sometimes its nice to have a server running scheduled tasks in the background. The VueJS UI covers many of the cfschedule attributes, but not all (more to be added later). There is only basic validation on the form, but you will be notified if there is an error saving your task.
 
 Using ColdBox 6, it is easy to drop in a new cfc in `/handlers` for more complex tasks.
+
+If you save the output to file it can be found in the `/logs` directory in the root of the project and will set the publish flag accordingly.
