@@ -21,3 +21,4 @@ Using ColdBox 6, it is easy to drop in a new cfc in `/handlers` for more complex
 If you save the output to file it can be found in the `/logs` directory in the root of the project and will set the publish flag accordingly.
 
 ![Screenshot](/screenshot.png)
+![Editing](/edit.png)
