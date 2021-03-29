@@ -18,18 +18,18 @@
 
 	<body>
 		<nav class="navbar" role="navigation" aria-label="main navigation">
-			<div class="navbar-brand">
-				<a class="navbar-item" href="/" style="font-size: 1.2em">
-					<i class="fas fa-clock"></i> <strong>Schedulr</strong>
-				</a>
-
-				<a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-					<span aria-hidden="true"></span>
-					<span aria-hidden="true"></span>
-					<span aria-hidden="true"></span>
-				</a>
+			<div class="container">
+				<div class="navbar-brand">
+					<a class="navbar-item" href="/" style="font-size: 1.2em">
+						<i class="fas fa-clock"></i> <strong class="pl-1 pt-1">Schedulr</strong>
+					</a>
+					<a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+						<span aria-hidden="true"></span>
+						<span aria-hidden="true"></span>
+						<span aria-hidden="true"></span>
+					</a>
+				</div>
 			</div>
-
 		</nav>
 		<div id="app" class="container">#renderView()#</div>
 		<script src="/assets/js/main.js?v=#lcase(createUUID())#"></script>

@@ -79,7 +79,7 @@
 				<td>
 					<i class="fas fa-edit" @click="edit(idx)"></i>
 					<i class="fas fa-play" @click="exe(tsk.task)"></i>
-					<i class="fas fa-pause" @click="doTask(idx)" v-bind:class="{ 'has-text-grey-light': tsk.paused }"></i>
+					<i class="fas fa-pause" @click="doTask(idx)" v-bind:class="{ 'has-text-grey-light': !tsk.paused }"></i>
 					<i class="fas fa-times" @click="del(tsk.task)"></i>
 				</td>
 			</tr>
