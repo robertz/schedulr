@@ -14,6 +14,7 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 		<script src="https://unpkg.com/vue@2.6.12/dist/vue.js"></script>
 		<script src="https://unpkg.com/moment@2.29.1/moment.js"></script>
+		<script src="https://unpkg.com/bulma-toast@1.5.1/dist/bulma-toast.min.js"></script>
 	</head>
 
 	<body>
@@ -32,6 +33,11 @@
 			</div>
 		</nav>
 		<div id="app" class="container">#renderView()#</div>
+		<script>
+			bulmaToast.setDefaults({
+				position: 'bottom-right'
+			})
+		</script>
 		<script src="/assets/js/main.js?v=#lcase(createUUID())#"></script>
 	</body>
 

@@ -16,9 +16,8 @@ new Vue({
 		editorValid: function () {
 			// is the current state of the editor valid to update
 			if(!('url' in this.editor)) return false
-
 			// validate the url is valid
-			function isValidHttpUrl(string) {
+			function validateUrl(string) {
 				let url;
 				try {
 					url = new URL(string);
@@ -27,13 +26,11 @@ new Vue({
 				}
 				return url.protocol === "http:" || url.protocol === "https:";
 			}
-
-			// compute yo
 			return (
 				this.editor.task.length &&
 				this.editor.startdate.length &&
 				this.editor.starttime.length &&
-				isValidHttpUrl(this.editor.url)
+				validateUrl(this.editor.url)
 			)
 		}
 	},
@@ -81,6 +78,7 @@ new Vue({
 		},
 		exe: function (task){
 			fetch(`/api/doTask/task/${task}/a/run`)
+			bulmaToast.toast({ message: `The task ${task} has executed.`, type: 'is-success', duration: 3000 })
 		},
 		loadTasks: function () {
 			fetch('/api/getTasks')
@@ -96,6 +94,7 @@ new Vue({
 				.then(res => {
 					this.tasks = res.response.tasks
 				})
+			bulmaToast.toast({ message: this.tasks[idx].task + (this.tasks[idx].paused ? ' resumed' : ' paused'), type: 'is-info', duration: 3000 })
 		},
 		updateTask: function () {
 			this.saveError = false
